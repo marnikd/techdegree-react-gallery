@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Photo from './Photo.js'
 import NotFound from './NotFound.js'
 
@@ -16,10 +17,14 @@ function PhotoList(props) {
     list = <NotFound />
   }
     return (
-        
+            <div className="photo-container">
+            <h2>
+                Results
+            </h2>
             <ul>
               {list}
             </ul>
+            </div>
       
     );
 }

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import axios from 'axios'
+import apiKey from './config.js'
+import './css/index.css';
+
+//Import of components
 import PhotoList from './PhotoList.js'
 import Search from './Search.js'
 import Nav from './Nav.js'
-import apiKey from './config.js'
-import './css/index.css';
-import axios from 'axios'
 import PageNotFound from './PageNotFound.js';
 
 class App extends Component{
@@ -47,8 +49,8 @@ class App extends Component{
     <div className="container">
          <Route exact path='/search' render = { ()=> <Search onSearch={this.searchPhoto}/>} />
          <Nav />
-         <div className="photo-container">
-        <h2>Results</h2>
+         
+        
         <Switch>
             <Route exact path="/" render={ () => (this.state.loading)?<p>Loading...</p>:<PhotoList data={this.state.photos}/>}/>
             <Route exact path="/search" render={ () => (this.state.loading)?<p>Loading...</p>:<PhotoList data={this.state.photos}/>}/>
@@ -57,7 +59,7 @@ class App extends Component{
             <Route exact path="/computers" render={ () => (this.state.loading)?<p>Loading...</p>:<PhotoList data={this.state.computers}/>}/>
             <Route component={PageNotFound}/>
         </Switch>
-         </div>
+         
     </div>
     </BrowserRouter>
         );
